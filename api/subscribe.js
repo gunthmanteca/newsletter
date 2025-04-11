@@ -5,22 +5,20 @@ export default async function handler(req, res) {
 
     const { email } = req.body;
 
-    // Validación básica de email
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).json({ message: 'Email no válido' });
     }
 
     try {
-        // Llamada a EnvialoSimple API
         const response = await fetch('https://api.envialosimple.com/v2/contacts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJpdiI6Ik1qUXdNek0yTkRBME9URXhNRGM0TkE9PSIsInZhbHVlIjoiczNWcUlXWHdTVFJhUnY5aHBEMHJEQWtqU2RQeW5nZkt3NXEyaWw4MnByWT0iLCJtYWMiOiI2ZTE3NjEzMzhjODY3MzA4NWNkNjg1N2Y2NWM3OWI0MDdiZDMzYjA0MDFkNWIwMTU0ODY3OWI2NDQ2MTYzMzQ3In0=' // Reemplaza por tu API KEY
+                'Authorization': 'Bearer eyJpdiI6Ik1qUXdNek0yTkRBME9URXhNRGM0TkE9PSIsInZhbHVlIjoiczNWcUlXWHdTVFJhUnY5aHBEMHJEQWtqU2RQeW5nZkt3NXEyaWw4MnByWT0iLCJtYWMiOiI2ZTE3NjEzMzhjODY3MzA4NWNkNjg1N2Y2NWM3OWI0MDdiZDMzYjA0MDFkNWIwMTU0ODY3OWI2NDQ2MTYzMzQ3In0=' // Tu API KEY
             },
             body: JSON.stringify({
                 Email: email,
-                ListID: 9 // Reemplaza por el ID de tu lista
+                Lists: [9] // Corregido aquí
             })
         });
 
