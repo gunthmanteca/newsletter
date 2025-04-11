@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
     try {
         // Crear contacto
-        const createContactResponse = await fetch('https://api.envialosimple.com/v2/contacts', {
+        const createContactResponse = await fetch('https://api.envialosimple.com/v2.0/contacts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         }
 
         // Agregar contacto a la lista
-        const addToListResponse = await fetch(`https://api.envialosimple.com/v2/lists/${listId}/contacts`, {
+        const addToListResponse = await fetch(`https://api.envialosimple.com/v2.0/lists/${listId}/contacts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
