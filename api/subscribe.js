@@ -5,6 +5,10 @@ export default async function handler(req, res) {
 
     const { email } = req.body;
 
+console.log('MÉTODO:', req.method);
+console.log('HEADERS:', req.headers);
+console.log('BODY RECIBIDO:', req.body);
+
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).json({ message: 'Email no válido' });
     }
